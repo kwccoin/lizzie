@@ -6,7 +6,7 @@
 
     <groupId>featurecat</groupId>
     <artifactId>lizzie</artifactId>
-    <version>0.5</version>
+    <version>0.6</version>
 
     <properties>
         <!-- Prevent warning: "[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!"-->
@@ -22,6 +22,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <compilerArgs>
+                      <arg>-Xlint:all</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -52,6 +55,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <!-- Required to get the test failure reports in stdout -->
+                    <useFile>false</useFile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.coveo</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>2.5.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -63,5 +87,26 @@
             <version>20180130</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://code.google.com/archive/p/juniversalchardet -->
+        <dependency>
+            <groupId>com.googlecode.juniversalchardet</groupId>
+            <artifactId>juniversalchardet</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.jhlabs/filters -->
+        <dependency>
+            <groupId>com.jhlabs</groupId>
+            <artifactId>filters</artifactId>
+            <version>2.0.235</version>
+        </dependency>
     </dependencies>
 </project>
